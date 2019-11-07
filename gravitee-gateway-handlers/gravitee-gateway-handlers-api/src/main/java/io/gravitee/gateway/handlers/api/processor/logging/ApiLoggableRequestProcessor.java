@@ -29,10 +29,12 @@ public class ApiLoggableRequestProcessor extends LoggableRequestProcessor {
 
     private final LoggingMode mode;
     private int maxSizeLogMessage;
+    private LogConfiguration logConfig;
 
-    public ApiLoggableRequestProcessor(Logging logging) {
+    public ApiLoggableRequestProcessor(Logging logging, LogConfiguration logConfig) {
         super(new ExpressionLanguageBasedConditionEvaluator(logging.getCondition()));
         this.mode = logging.getMode();
+        this.logConfig = logConfig;
     }
 
     @Override

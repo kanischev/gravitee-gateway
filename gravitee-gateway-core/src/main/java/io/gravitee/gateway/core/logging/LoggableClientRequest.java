@@ -21,6 +21,7 @@ import io.gravitee.gateway.api.RequestWrapper;
 import io.gravitee.gateway.api.buffer.Buffer;
 import io.gravitee.gateway.api.handler.Handler;
 import io.gravitee.gateway.api.stream.ReadStream;
+import io.gravitee.reporter.api.common.SSLInfo;
 import io.gravitee.reporter.api.log.Log;
 
 /**
@@ -45,6 +46,7 @@ public class LoggableClientRequest extends RequestWrapper {
         log.getClientRequest().setMethod(this.method());
         log.getClientRequest().setUri(this.uri());
         log.getClientRequest().setHeaders(new HttpHeaders(this.headers()));
+        log.getClientRequest().setSslInfo(new SSLInfo(this.sslSession(), true));
     }
 
     @Override

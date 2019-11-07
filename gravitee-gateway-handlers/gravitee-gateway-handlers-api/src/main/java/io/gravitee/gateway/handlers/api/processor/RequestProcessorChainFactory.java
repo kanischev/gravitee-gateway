@@ -51,6 +51,9 @@ public class RequestProcessorChainFactory extends ApiProcessorChainFactory {
     @Value("${reporters.logging.max_size:-1}")
     private int maxSizeLogMessage;
 
+    @Value("${reporters.logging.logSSL.enabled:false}")
+    private boolean logSSLInfo;
+
     public void afterPropertiesSet() {
         ApiPolicyResolver apiPolicyResolver = new ApiPolicyResolver();
         applicationContext.getAutowireCapableBeanFactory().autowireBean(apiPolicyResolver);

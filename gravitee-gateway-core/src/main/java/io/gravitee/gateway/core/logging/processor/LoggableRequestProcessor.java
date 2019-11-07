@@ -50,6 +50,7 @@ public class LoggableRequestProcessor extends AbstractProcessor<ExecutionContext
 
                 int maxSizeLogMessage = LoggingUtils.getMaxSizeLogMessage(context);
 
+
                 ((MutableExecutionContext) context).request(maxSizeLogMessage == - 1 ?
                         new LoggableClientRequest(context.request()) :
                         new LimitedLoggableClientRequest(context.request(), maxSizeLogMessage));

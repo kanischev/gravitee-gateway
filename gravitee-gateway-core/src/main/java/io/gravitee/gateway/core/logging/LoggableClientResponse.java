@@ -21,6 +21,7 @@ import io.gravitee.gateway.api.Response;
 import io.gravitee.gateway.api.buffer.Buffer;
 import io.gravitee.gateway.api.handler.Handler;
 import io.gravitee.gateway.api.stream.WriteStream;
+import io.gravitee.reporter.api.common.SSLInfo;
 import io.gravitee.reporter.api.log.Log;
 
 /**
@@ -74,6 +75,7 @@ public class LoggableClientResponse implements Response {
     private void calculate(Buffer buffer) {
         // Here we are sure that headers has been full processed by policies
         log.getClientResponse().setHeaders(headers());
+        log.getClientResponse().setSslInfo(new SSLInfo(request.sslSession(), true));
 
         if (buffer != null) {
             log.getClientResponse().setBody(buffer.toString());
